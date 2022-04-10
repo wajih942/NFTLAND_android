@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckActivity"
+    android:orientation="vertical"
+    android:layout_margin="15dp">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="NftLand"
+        app:logo="@drawable/logo"
+        >
+
+    </androidx.appcompat.widget.Toolbar>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/material_icon_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:textColor="@color/black"
+        app:icon="@drawable/left"
+        android:layout_margin="15dp"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please check the transaction  Hash On Rinkeby Etherscan "
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+        <TextView
+
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hash : 0x454545x54x78x45x454x85s454x8s74xs854x8s4"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="normal"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:backgroundTint="@color/design_default_color_primary_dark"
+            android:layout_margin="15dp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
