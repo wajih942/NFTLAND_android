@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_check.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_details.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_info.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_key.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_preview.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_private.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_profile.xml" value="0.10520833333333333" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_search.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_upload.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_wallet.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/register_activity.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_check.xml" value="0.1651469098277609" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.1651469098277609" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.1651469098277609" />

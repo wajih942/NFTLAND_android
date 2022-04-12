@@ -50,11 +50,11 @@
         app:startIconTint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtLogin"
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:hint="Login"
+            android:hint="Login or Email"
             android:textColor="@color/black"
             android:inputType="text" />
 

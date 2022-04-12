@@ -8,7 +8,7 @@
     tools:context=".RegisterActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView1"
         android:layout_width="85dp"
         android:layout_height="72dp"
         android:layout_marginTop="20dp"
@@ -27,7 +27,7 @@
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
         app:startIconDrawable="@drawable/ic_person"
         app:startIconTint="@color/white">
 
