@@ -1,11 +1,17 @@
 package com.example.nft
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.Toast
+import com.example.nft.utils.ApiService
+import com.example.nft.utils.CustomerService
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -55,13 +61,40 @@ class RegisterActivity : AppCompatActivity() {
         val btnRegister =findViewById<Button>(R.id.btnRegister)
 
         btnRegister!!.setOnClickListener{
-            val mainIntent = Intent(this, ProfileActivity::class.java)
-            startActivity(mainIntent)
-            finish()
+            ApiService.customerService.register(
+                CustomerService.CustomerBody(
+                    txtEmail!!.text.toString(),
+                    txtPassword!!.text.toString(),
+                    txtName!!.text.toString(),
+                    txtBio!!.text.toString(),
+                    txtWalletAdd!!.text.toString(),
+                    txtUrl!!.text.toString()
+                )
+            )
+                .enqueue(
+                    object : Callback<CustomerService.CustomerResponse> {
+                        override fun onResponse(
+                            call: Call<CustomerService.CustomerResponse>,
+                            response: Response<CustomerService.CustomerResponse>
+                        ) {
+                            if (response.code() == 201) {
+                                Toast.makeText(this@RegisterActivity, "Success", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Log.d("HTTP ERROR", "status code is " + response.code())
+                            }
+                        }
+
+                        override fun onFailure(
+                            call: Call<CustomerService.CustomerResponse>,
+                            t: Throwable
+                        ) {
+                            Log.d("FAIL", "fail")
+                        }
+                    }
+                )
         }
 
     }
-
 
 
 
