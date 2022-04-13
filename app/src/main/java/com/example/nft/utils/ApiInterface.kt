@@ -1,24 +1,22 @@
 package com.example.nft.utils
 
 import com.example.nft.models.Customer
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.POST
-import retrofit2.http.Query
-import retrofit2.Call
+
+import retrofit2.http.Body
+import retrofit2.http.Headers
+
 
 interface ApiInterface {
-    @POST("register")
-    fun register(@Query("name") name: String,
-                 @Query("url") url: String,
-                 @Query("bio") bio: String,
-                 @Query("email") email: String,
-                 @Query("password") password: String,
-                 @Query("wallet_address") wallet_address: String): Call<Customer>
+    @POST("/customers")
+    fun registerUser(@Body info: Customer): retrofit2.Call<ResponseBody>
 
     companion object {
 
-        var BASE_URL = "https://nftback.herokuapp.com/customers"
+        var BASE_URL = "http://nftback.herokuapp.com"
 
         fun create() : ApiInterface {
 
@@ -26,8 +24,8 @@ interface ApiInterface {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build()
-
             return retrofit.create(ApiInterface::class.java)
+
         }
     }
 }
