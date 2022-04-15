@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnStart =findViewById<Button>(R.id.button)
         btnStart!!.setOnClickListener{
-            val mainIntent = Intent(this, RegisterActivity::class.java)
+            val mainIntent = Intent(this, LoginActivity::class.java)
             startActivity(mainIntent)
             finish()
         }

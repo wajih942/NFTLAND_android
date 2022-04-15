@@ -41,6 +41,10 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin =findViewById<Button>(R.id.btnLogin)
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
+        if (mSharedPref.getBoolean(IS_REMEMBRED, false)){
+            navigate()
+        }
+
         btnLogin!!.setOnClickListener{
             ApiService.customerService.login(
                 CustomerService.LoginBody(
@@ -55,8 +59,10 @@ class LoginActivity : AppCompatActivity() {
                             call: Call<CustomerService.CustomerResponse>,
                             response: Response<CustomerService.CustomerResponse>
                         ) {
-                            if (response.code() == 201) {
+                            if (response.code() == 200) {
                                 Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_SHORT).show()
+                                navigate()
+                                SaveUser()
                             } else {
                                 Log.d("HTTP ERROR", "status code is " + response.code())
                             }
@@ -78,5 +84,18 @@ class LoginActivity : AppCompatActivity() {
     private fun navigate(){
         val mainIntent = Intent(this, ProfileActivity::class.java)
         startActivity(mainIntent)
+    }
+    private fun SaveUser(){
+        if (cbRememberMe.isChecked){
+            mSharedPref.edit().apply{
+                putBoolean(IS_REMEMBRED, true)
+                putString(LOGIN, txtEmail.text.toString())
+                putString(PASSWORD, txtPassword.text.toString())
+            }.apply()
+
+        }else{
+            mSharedPref.edit().clear().apply()
+        }
+
     }
 }
