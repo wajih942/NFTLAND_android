@@ -41,9 +41,9 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin =findViewById<Button>(R.id.btnLogin)
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
-        if (mSharedPref.getBoolean(IS_REMEMBRED, false)){
+      /*  if (mSharedPref.getBoolean(IS_REMEMBRED, false)){
             navigate()
-        }
+        }*/
 
         btnLogin!!.setOnClickListener{
             ApiService.customerService.login(
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                             if (response.code() == 200) {
                                 Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_SHORT).show()
                                 navigate()
-                                SaveUser()
+
                             } else {
                                 Log.d("HTTP ERROR", "status code is " + response.code())
                             }

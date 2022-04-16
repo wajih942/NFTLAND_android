@@ -1,14 +1,21 @@
 package com.example.nft
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContract
 import com.example.nft.utils.ApiService
 import com.example.nft.utils.CustomerService
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.theartofdev.edmodo.cropper.CropImage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +40,18 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtWalletAdd: TextInputEditText
     lateinit var txtLayoutWalletAdd: TextInputLayout
 
+    private val cropActivityResultContract = object : ActivityResultContract<Any?, Uri?>(){
+        override fun createIntent(context: Context, input: Any?): Intent {
+        return CropImage.activity()
+            .getIntent(this@RegisterActivity)
+        }
 
+        override fun parseResult(resultCode: Int, intent: Intent?): Uri? {
+           return CropImage.getActivityResult(intent)?.uri
+        }
+
+    }
+    private lateinit var cropActivityResultlancher : ActivityResultLauncher<Any?>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +77,18 @@ class RegisterActivity : AppCompatActivity() {
         txtLayoutWalletAdd = findViewById(R.id.txtLayoutWalletAdress)
 
         val btnRegister =findViewById<Button>(R.id.btnRegister)
+        val btnChooseImage =findViewById<Button>(R.id.btnChooseImage)
+        val ImageProfile =findViewById<ImageView>(R.id.ImageProfile)
+
+        cropActivityResultlancher = registerForActivityResult(cropActivityResultContract){
+         it?.let{
+             uri -> ImageProfile.setImageURI(uri)
+         }
+     }
+        btnChooseImage.setOnClickListener{
+            cropActivityResultlancher.launch(null)
+        }
+
 
         btnRegister!!.setOnClickListener{
             ApiService.customerService.register(
