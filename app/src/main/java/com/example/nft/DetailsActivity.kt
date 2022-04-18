@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 
 class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +20,7 @@ class DetailsActivity : AppCompatActivity() {
         var desc1 = findViewById<TextView>(R.id.descriptiondetails)
         var seller1 = findViewById<TextView>(R.id.sellerdetails)
         var image1 = findViewById<ImageView>(R.id.imagedetails)
+        var buybtn = findViewById<Button>(R.id.buydetails)
 
 
 
@@ -29,11 +31,13 @@ class DetailsActivity : AppCompatActivity() {
         val price = intent.getStringExtra("price")
         val description = intent.getStringExtra("desc")
         val seller = intent.getStringExtra("seller")
+        val image = intent.getStringExtra("image")
 
+        buybtn.setOnClickListener {
+            var intent = Intent(it.context,WalletActivity::class.java)
+            startActivity(intent)
+        }
 
-
-        var bitmap : Bitmap? = intent.getByteArrayExtra("image")
-            ?.let { BitmapFactory.decodeByteArray(intent.getByteArrayExtra("image"),0 , it.size) }
 
 
 
@@ -46,7 +50,8 @@ class DetailsActivity : AppCompatActivity() {
         price1.setText(price + " ETH")
         desc1.setText(description)
         seller1.setText("Seller address : " + seller)
-        image1.setImageBitmap(bitmap)
+        Glide.with(this).load(image).into(image1)
+
 
 
     }
