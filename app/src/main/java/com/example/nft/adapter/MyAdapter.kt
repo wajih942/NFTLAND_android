@@ -2,9 +2,12 @@ package com.example.nft.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -19,6 +22,7 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     private var nfts = emptyList<Item>()
 
+
     class MyViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
 
 
@@ -27,6 +31,8 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+
 
 
 
@@ -39,8 +45,8 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
             intent.putExtra("name",nfts[position].name)
             intent.putExtra("price",nfts[position].price)
             intent.putExtra("desc",nfts[position].description)
-            intent.putExtra("owner",nfts[position].seller)
-            intent.putExtra("image",nfts[position].image)
+            intent.putExtra("seller",nfts[position].seller)
+            intent.putExtra("image",(holder.itemView.findViewById<ImageView>(R.id.nftimage).drawable as BitmapDrawable).bitmap)
 
 
             it.context.startActivity(intent)
