@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val logo = findViewById<ImageView>(R.id.logo)
         logo.alpha = 0f
         logo.animate().setDuration(1500).alpha(1f).withEndAction{
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
             finish()

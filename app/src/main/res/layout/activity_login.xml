@@ -83,6 +83,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbRememberMe" />
-
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/UiRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="REGISTER HERE"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:backgroundTint="@color/design_default_color_primary_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/UiResetPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Forgot Password ?"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:backgroundTint="@color/design_default_color_primary_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UiRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>

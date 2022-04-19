@@ -1,24 +1,27 @@
 package com.example.nft
 
-import android.content.Context
+
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
 import com.example.nft.utils.ApiService
 import com.example.nft.utils.CustomerService
+import com.example.nft.utils.URIPathHelper
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.theartofdev.edmodo.cropper.CropImage
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -40,18 +43,9 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var txtWalletAdd: TextInputEditText
     lateinit var txtLayoutWalletAdd: TextInputLayout
 
-    private val cropActivityResultContract = object : ActivityResultContract<Any?, Uri?>(){
-        override fun createIntent(context: Context, input: Any?): Intent {
-        return CropImage.activity()
-            .getIntent(this@RegisterActivity)
-        }
-
-        override fun parseResult(resultCode: Int, intent: Intent?): Uri? {
-           return CropImage.getActivityResult(intent)?.uri
-        }
-
-    }
-    private lateinit var cropActivityResultlancher : ActivityResultLauncher<Any?>
+    var ImageProfile: ImageView? = null
+    private val pickImage = 100
+    private var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,21 +70,19 @@ class RegisterActivity : AppCompatActivity() {
         txtWalletAdd = findViewById(R.id.txtWalletAdress)
         txtLayoutWalletAdd = findViewById(R.id.txtLayoutWalletAdress)
 
-        val btnRegister =findViewById<Button>(R.id.btnRegister)
-        val btnChooseImage =findViewById<Button>(R.id.btnChooseImage)
-        val ImageProfile =findViewById<ImageView>(R.id.ImageProfile)
+        val btnRegister = findViewById<Button>(R.id.btnRegister)
+        val btnChooseImage = findViewById<Button>(R.id.btnChooseImage)
 
-        cropActivityResultlancher = registerForActivityResult(cropActivityResultContract){
-         it?.let{
-             uri -> ImageProfile.setImageURI(uri)
-         }
-     }
-        btnChooseImage.setOnClickListener{
-            cropActivityResultlancher.launch(null)
+
+
+        btnChooseImage.setOnClickListener {
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityForResult(gallery, pickImage)
         }
 
 
-        btnRegister!!.setOnClickListener{
+
+        btnRegister!!.setOnClickListener {
             ApiService.customerService.register(
                 CustomerService.CustomerBody(
                     txtEmail!!.text.toString(),
@@ -108,7 +100,9 @@ class RegisterActivity : AppCompatActivity() {
                             response: Response<CustomerService.CustomerResponse>
                         ) {
                             if (response.code() == 201) {
-                                Toast.makeText(this@RegisterActivity, "Success", Toast.LENGTH_SHORT).show()
+
+                                Toast.makeText(this@RegisterActivity, "Success", Toast.LENGTH_SHORT)
+                                    .show()
                             } else {
                                 Log.d("HTTP ERROR", "status code is " + response.code())
                             }
@@ -124,8 +118,27 @@ class RegisterActivity : AppCompatActivity() {
                 )
         }
 
+         // Either Uri, File or String file path
+
     }
 
+    private fun uploadImage() {
+        val uriPathHelper = URIPathHelper()
+        val filePath = uriPathHelper.getPath(this, imageUri!!)
+        Log.i("FilePath", filePath.toString())
+        val file = File(filePath)
+        val requestFile: RequestBody =
+            RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
+        val multiPartBody = MultipartBody.Part.createFormData("file", file.name, requestFile)    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data
+            val ImageProfile = findViewById<ImageView>(R.id.ivProfile)
+            ImageProfile?.setImageURI(imageUri)
+            uploadImage()
+        }
+    }
 
 }

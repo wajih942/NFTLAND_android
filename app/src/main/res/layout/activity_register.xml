@@ -153,8 +153,7 @@
             <ImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/avatar" />
+                android:layout_height="wrap_content" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnChooseImage"

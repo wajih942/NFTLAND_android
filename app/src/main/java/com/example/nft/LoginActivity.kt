@@ -41,35 +41,44 @@ class LoginActivity : AppCompatActivity() {
         val btnLogin =findViewById<Button>(R.id.btnLogin)
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
-      /*  if (mSharedPref.getBoolean(IS_REMEMBRED, false)){
-            navigate()
-        }*/
+        val bntRegister = findViewById<Button>(R.id.UiRegister)
+        bntRegister!!.setOnClickListener{
+            val mainIntent = Intent(this, RegisterActivity::class.java)
+            startActivity(mainIntent)
+
+        }
+        if (mSharedPref.getBoolean(IS_REMEMBRED, false)){
+            SaveUser()
+        }
 
         btnLogin!!.setOnClickListener{
             ApiService.customerService.login(
                 CustomerService.LoginBody(
                     txtEmail!!.text.toString(),
                     txtPassword!!.text.toString(),
-
                 )
             )
                 .enqueue(
-                    object : Callback<CustomerService.CustomerResponse> {
+                    object : Callback<CustomerService.LoginResponse> {
                         override fun onResponse(
-                            call: Call<CustomerService.CustomerResponse>,
-                            response: Response<CustomerService.CustomerResponse>
+                            call: Call<CustomerService.LoginResponse>,
+                            response: Response<CustomerService.LoginResponse>
                         ) {
                             if (response.code() == 200) {
                                 Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_SHORT).show()
                                 navigate()
 
-                            } else {
-                                Log.d("HTTP ERROR", "status code is " + response.code())
+                            }
+                            else if (response.code() == 401){
+                                Toast.makeText(this@LoginActivity, "Check you credentials ", Toast.LENGTH_SHORT).show()
+                            }
+                            else {
+                                Toast.makeText(this@LoginActivity, "ERROR", android.widget.Toast.LENGTH_SHORT).show()
                             }
                         }
 
                         override fun onFailure(
-                            call: Call<CustomerService.CustomerResponse>,
+                            call: Call<CustomerService.LoginResponse>,
                             t: Throwable
                         ) {
                             Log.d("FAIL", "fail")
@@ -84,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
     private fun navigate(){
         val mainIntent = Intent(this, ProfileActivity::class.java)
         startActivity(mainIntent)
+        finish()
     }
     private fun SaveUser(){
         if (cbRememberMe.isChecked){
