@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+
+
+
+    <item android:title="Manage Profile">
+        <menu>
+            <item android:id="@+id/profile"
+                android:icon="@drawable/line4"
+                android:title="My Profile"/>
+
+            <item android:id="@+id/disconnect"
+                android:icon="@drawable/line3"
+                android:title="Disconnect"/>
+        </menu>
+
+    </item>
+
+    <item android:title="Items">
+        <menu>
+            <item android:id="@+id/search"
+                android:icon="@drawable/search"
+                android:title="Search"/>
+
+            <item android:id="@+id/upload"
+                android:icon="@drawable/line1"
+                android:title="Upload Items"/>
+
+        </menu>
+
+    </item>
+    <item android:title="Settings">
+        <menu>
+
+            <item android:id="@+id/theme"
+                android:icon="@drawable/line2"
+                android:title="Dark Theme"/>
+
+        </menu>
+
+    </item>
+
+
+
+</menu>
