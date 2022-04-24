@@ -48,10 +48,11 @@ class LoginActivity : AppCompatActivity() {
 
         }
         if (mSharedPref.getBoolean(IS_REMEMBRED, false)){
-            SaveUser()
+            navigate()
         }
 
         btnLogin!!.setOnClickListener{
+        if (validate()){
             ApiService.customerService.login(
                 CustomerService.LoginBody(
                     txtEmail!!.text.toString(),
@@ -66,11 +67,12 @@ class LoginActivity : AppCompatActivity() {
                         ) {
                             if (response.code() == 200) {
                                 Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_SHORT).show()
+                                SaveUser()
                                 navigate()
 
                             }
                             else if (response.code() == 401){
-                                Toast.makeText(this@LoginActivity, "Check you credentials ", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@LoginActivity, "Check your credentials ", Toast.LENGTH_SHORT).show()
                             }
                             else {
                                 Toast.makeText(this@LoginActivity, "ERROR", android.widget.Toast.LENGTH_SHORT).show()
@@ -88,6 +90,25 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+        }
+    }
+
+
+    private fun validate(): Boolean {
+        txtEmail.error = null
+        txtPassword.error = null
+
+        if (txtEmail.text!!.isEmpty()){
+            txtEmail.error = getString(R.string.mustNotBeEmpty)
+            return false
+        }
+
+        if (txtPassword.text!!.isEmpty()){
+            txtPassword.error = getString(R.string.mustNotBeEmpty)
+            return false
+        }
+
+        return true
     }
 
     private fun navigate(){

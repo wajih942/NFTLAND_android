@@ -7,4 +7,5 @@ data class Customer(
     var email: String,
     var password: String,
     var wallet_address: String,
+    var profile_picture:String
 )

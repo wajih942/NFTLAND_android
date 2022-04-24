@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:background="@drawable/background">
+    tools:context=".RegisterActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -29,7 +28,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtLayoutEmail"
-                android:layout_width="300dp"
+                android:layout_width="353dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 app:errorEnabled="true"
@@ -184,5 +183,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

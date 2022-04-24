@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.content.SharedPreferences
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContentProviderCompat.requireContext
 
@@ -18,7 +19,10 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
         val btnupdate = findViewById(R.id.btnUpdate) as ImageView
+
+        val btnCopy = findViewById(R.id.btncopy) as ImageView
         val btnlogout = findViewById(R.id.btnlogout) as ImageView
 
         btnupdate!!.setOnClickListener{
@@ -57,6 +61,12 @@ class ProfileActivity : AppCompatActivity() {
 
 
     }
-
+    private fun copyTextToClipboard() {
+        val textToCopy = etTextToCopy.text
+        val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newPlainText("text", textToCopy)
+        clipboardManager.setPrimaryClip(clipData)
+        Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_LONG).show()
+    }
 
 }
