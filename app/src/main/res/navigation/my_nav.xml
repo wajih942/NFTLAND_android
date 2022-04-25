@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/purshasedFragment">
+
+    <fragment
+        android:id="@+id/purshasedFragment"
+        android:name="com.example.nft.PurshasedFragment"
+        android:label="fragment_purshased"
+        tools:layout="@layout/fragment_purshased" >
+        <action
+            android:id="@+id/action_purshasedFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_purshasedFragment_to_onSalesFragment"
+            app:destination="@id/onSalesFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.nft.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_purshasedFragment"
+            app:destination="@id/purshasedFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/onSalesFragment"
+        android:name="com.example.nft.OnSalesFragment"
+        android:label="fragment_on_sales"
+        tools:layout="@layout/fragment_on_sales" >
+        <action
+            android:id="@+id/action_onSalesFragment_to_purshasedFragment"
+            app:destination="@id/purshasedFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+</navigation>

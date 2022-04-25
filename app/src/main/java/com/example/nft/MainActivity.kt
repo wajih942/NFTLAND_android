@@ -37,11 +37,34 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        setContentView(R.layout.activity_search)
+        setContentView(R.layout.activity_main)
+
+        var tool = findViewById<Toolbar>(R.id.toolbarb)
+        setSupportActionBar(tool)
+        //drawer
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+
+
+        toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.profile -> Toast.makeText(this,"clicked profile",Toast.LENGTH_SHORT).show()
+            }
+            true
+        }
+        /*
         var tool = findViewById<Toolbar>(R.id.toolbarb)
         setSupportActionBar(tool)
         //drawer
@@ -93,7 +116,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-        })
+        })*/
     }
     private fun setupRecyclerview(){
         var recyclerView = findViewById<RecyclerView>(R.id.nftsRecycler)
