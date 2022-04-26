@@ -10,33 +10,41 @@ interface CustomerService {
     data class LoginResponse(
         @SerializedName("token")
         val token: String,
-        val customer: Customer
+        val Customer: Customer
     )
 
-
-    data class CustomerResponse(
-        @SerializedName("customer")
-        val customer: Customer
+    data class RecoverResponse(
+        @SerializedName("Token")
+        val Token: String
     )
+
+    data class ResetResponse(
+        @SerializedName("message")
+        val mssage: String
+    )
+
     data class LoginBody(val email: String, val password: String)
+    data class ResetBody(val email: String, val password: String)
 
-    data class CustomerBody(val email: String, val password: String, val name: String, val bio: String, val walletAdress: String, val url: String,val profile_picture:String)
+    data class recoverBody(val email: String)
+
+    @POST("/customers/reset/{token}")
+    fun reset(@Body ResetBody: ResetBody,
+        @Query("token") token: String?
+
+    ): Call<ResetResponse>
+
+
+    @POST("/customers/recover")
+    fun recover(@Body changepasswordrecover: recoverBody): Call<RecoverResponse>
 
 
     @POST("/customers/login")
     fun login(@Body loginBody: LoginBody): Call<LoginResponse>
-/*
-    @Multipart
-    @POST("/customers")
-    fun register(@Part customerBody: CustomerBody,
-    @Part profile_picture : MultipartBody.Part
-    ): Call<CustomerResponse>
 
-*/
 
     @Multipart
     @POST("customers")
-    //fun register(@Body user:User,@Part): Call<User>
     fun register(@PartMap data : LinkedHashMap<String, RequestBody>,
                  @Part profile_picture: MultipartBody.Part
 

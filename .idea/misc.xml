@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/drawable/btndesign.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/drawable/ic_baseline_cached_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_change_password.xml" value="0.22" />
         <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_check.xml" value="0.125" />
         <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_details.xml" value="0.125" />
         <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_info.xml" value="0.33" />

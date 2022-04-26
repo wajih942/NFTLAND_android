@@ -1,13 +1,16 @@
 package com.example.nft
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Toast
+import android.view.MotionEvent
+import android.view.View
+import android.widget.*
 import com.example.nft.utils.ApiService
 import com.example.nft.utils.CustomerService
 import com.google.android.material.textfield.TextInputEditText
@@ -26,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
     lateinit var txtEmail: TextInputEditText
     lateinit var txtPassword: TextInputEditText
     lateinit var cbRememberMe: CheckBox
-
     lateinit var mSharedPref: SharedPreferences
 
 
@@ -38,8 +40,14 @@ class LoginActivity : AppCompatActivity() {
         txtEmail = findViewById(R.id.txtEmail)
         txtPassword = findViewById(R.id.txtPassword)
         cbRememberMe = findViewById(R.id.cbRememberMe)
+        val waiting = findViewById<TextView>(R.id.textWaiting)
         val btnLogin =findViewById<Button>(R.id.btnLogin)
+        val waitingLayout = findViewById<LinearLayout>(R.id.waiting)
+        val forgetpassword = findViewById<TextView>(R.id.forgetpassword)
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        val LoginFailed = findViewById<ImageView>(R.id.LoginFailed)
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        waitingLayout.visibility = View.GONE
 
         val bntRegister = findViewById<Button>(R.id.UiRegister)
         bntRegister!!.setOnClickListener{
@@ -52,6 +60,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnLogin!!.setOnClickListener{
+            btnLogin.visibility = View.GONE
+            waitingLayout.visibility = View.VISIBLE
+            forgetpassword.visibility = View.GONE
         if (validate()){
             ApiService.customerService.login(
                 CustomerService.LoginBody(
@@ -66,14 +77,48 @@ class LoginActivity : AppCompatActivity() {
                             response: Response<CustomerService.LoginResponse>
                         ) {
                             if (response.code() == 200) {
+
+                                val preferences: SharedPreferences =
+                                    getSharedPreferences("pref", Context.MODE_PRIVATE)
+                                val editor = preferences.edit()
+                                editor.putString("token", response.body()?.token.toString())
+
+                                editor.putString("email", response.body()?.Customer?.email.toString())
+                                    .apply()
+                                editor.putString("wallet_address", response.body()?.Customer?.wallet_address.toString())
+                                    .apply()
+                                editor.putString("name", response.body()?.Customer?.name.toString())
+                                    .apply()
+                                editor.putString("url", response.body()?.Customer?.url.toString())
+                                    .apply()
+                                editor.putString("bio", response.body()?.Customer?.bio.toString())
+                                    .apply()
+                                editor.putString("profile_picture", response.body()?.Customer?.profile_picture.toString())
+                                    .apply()
                                 Toast.makeText(this@LoginActivity, "Success", Toast.LENGTH_SHORT).show()
                                 SaveUser()
                                 navigate()
 
                             }
                             else if (response.code() == 401){
-                                Toast.makeText(this@LoginActivity, "Check your credentials ", Toast.LENGTH_SHORT).show()
-                            }
+
+                                progressBar.visibility = View.GONE
+                                waiting.text = "Login Failed"
+                                LoginFailed.visibility = View.VISIBLE
+
+                                waitingLayout.isClickable = true
+
+                                waitingLayout.setOnClickListener {
+                                    waitingLayout.visibility = View.GONE
+                                    forgetpassword.visibility = View.VISIBLE
+                                    LoginFailed.visibility = View.VISIBLE
+
+                                    txtEmail.setText("")
+                                    txtPassword.setText("")
+                                    btnLogin.visibility = View.VISIBLE
+
+                                }                            }
+
                             else {
                                 Toast.makeText(this@LoginActivity, "ERROR", android.widget.Toast.LENGTH_SHORT).show()
                             }
@@ -92,6 +137,8 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
+
+
 
 
     private fun validate(): Boolean {
@@ -129,4 +176,5 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
 }
