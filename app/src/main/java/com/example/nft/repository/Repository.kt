@@ -8,4 +8,11 @@ class Repository {
     suspend fun getItem() : Response<List<Item>>{
         return RetrofitInstance.api.getItem()
     }
+    suspend fun getPurshased() : Response<List<Item>>{
+        return RetrofitInstance.api.getPurshased()
+    }
+
+    suspend fun getOnSale() : Response<List<Item>>{
+        return RetrofitInstance.api.getOnSale()
+    }
 }

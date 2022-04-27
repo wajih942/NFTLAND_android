@@ -17,4 +17,19 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         }
 
     }
+    fun getPurshased(){
+        viewModelScope.launch {
+            val response = repository.getPurshased()
+            myResponse.value = response
+        }
+
+    }
+
+    fun getOnSale(){
+        viewModelScope.launch {
+            val response = repository.getOnSale()
+            myResponse.value = response
+        }
+
+    }
 }

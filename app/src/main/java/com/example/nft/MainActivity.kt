@@ -1,6 +1,7 @@
 package com.example.nft
 
 import android.content.ClipData
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -60,7 +61,8 @@ class MainActivity : AppCompatActivity() {
 
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.profile -> Toast.makeText(this,"clicked profile",Toast.LENGTH_SHORT).show()
+                R.id.profile -> Toast.makeText(this,"you are already on profile ",Toast.LENGTH_SHORT).show()
+                R.id.search -> goToSearch()
             }
             true
         }
@@ -175,6 +177,10 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }*/
+    fun goToSearch(){
+        val intent = Intent(this,SearchActivity::class.java)
+        startActivity(intent)
+    }
 
 
 }

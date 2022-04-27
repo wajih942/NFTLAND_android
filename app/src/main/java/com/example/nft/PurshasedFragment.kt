@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nft.adapter.MyAdapter
+import com.example.nft.adapter.MyAdapter1
 import com.example.nft.model.Item
 import com.example.nft.repository.Repository
 
@@ -22,7 +23,7 @@ import com.example.nft.repository.Repository
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-private val myAdapter by lazy { MyAdapter() }
+private val myAdapter by lazy { MyAdapter1() }
 private lateinit var viewModel: MainViewModel
 private lateinit var tempitemArrayList : ArrayList<Item>
 /**
@@ -70,7 +71,7 @@ class PurshasedFragment : Fragment() {
         val viewModelFactory = MainViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
         tempitemArrayList = arrayListOf<Item>()
-        viewModel.getItem()
+        viewModel.getPurshased()
         viewModel.myResponse.observe(this, Observer { response ->
             if (response.isSuccessful) {
 

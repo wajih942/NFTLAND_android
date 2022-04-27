@@ -7,31 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".DetailsActivity"
     android:orientation="vertical"
-
-
     >
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="NftLand"
-        app:logo="@drawable/logo"
-        >
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/imagedetails"
 
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/img16"/>
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnreturn"
         style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:text="Return"
         android:textColor="@color/black"
         app:icon="@drawable/left"
-        android:layout_margin="15dp"
 
         />
-
 
     <LinearLayout
 
@@ -53,12 +49,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
-                <ImageView
-                    android:id="@+id/imagedetails"
-                    android:paddingTop="50dp"
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:src="@drawable/img16"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
