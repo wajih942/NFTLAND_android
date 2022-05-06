@@ -10,14 +10,14 @@
     <item android:title="Manage Profile">
         <menu>
             <item android:id="@+id/profile"
-                android:icon="@drawable/line4"
+                android:icon="@drawable/person24"
                 android:title="My Profile"/>
             <item android:id="@+id/wallet"
                 android:icon="@drawable/wallet1"
                 android:title="Add your wallet"/>
 
             <item android:id="@+id/disconnect"
-                android:icon="@drawable/line3"
+                android:icon="@drawable/logout24"
                 android:title="Disconnect"/>
         </menu>
 
@@ -26,11 +26,11 @@
     <item android:title="Items">
         <menu>
             <item android:id="@+id/search"
-                android:icon="@drawable/search"
+                android:icon="@drawable/search24"
                 android:title="Search"/>
 
             <item android:id="@+id/upload"
-                android:icon="@drawable/line1"
+                android:icon="@drawable/upload24"
                 android:title="Upload Items"/>
 
         </menu>
@@ -40,8 +40,8 @@
         <menu>
 
             <item android:id="@+id/theme"
-                android:icon="@drawable/line2"
-                android:title="Dark Theme"/>
+                android:icon="@drawable/settings24"
+                android:title="Settings"/>
 
         </menu>
 
