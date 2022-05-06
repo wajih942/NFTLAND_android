@@ -14,7 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nft">
         <activity
-            android:name=".change_passwordActivity"
+            android:name=".ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Change_passwordActivity"
             android:exported="false" />
         <activity
             android:name=".UpdateProfile"

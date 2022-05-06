@@ -10,7 +10,6 @@ import android.content.SharedPreferences
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.nft.utils.ApiService
 import com.example.nft.utils.CustomerService
 import com.squareup.picasso.Picasso
@@ -33,10 +32,10 @@ class ProfileActivity : AppCompatActivity() {
         txtEmail.text = preferences.getString("email","")
 
         val tvwalletadress = findViewById<TextView>(R.id.tvwalletadress)
-        tvwalletadress.text = preferences.getString("name","")
+        tvwalletadress.text = preferences.getString("wallet_address","")
 
         val txtName = findViewById<TextView>(R.id.txtName)
-        txtName.text = preferences.getString("wallet_address","")
+        txtName.text = preferences.getString("name","")
 
         val txtUrl = findViewById<TextView>(R.id.txtUrl)
         txtUrl.text = preferences.getString("url","")
@@ -51,13 +50,14 @@ class ProfileActivity : AppCompatActivity() {
             .load(preferences.getString("profile_picture", ""))
             .into(imageprofile)
 
-
+Log.i("hhhhhhhhhhhhhhh",preferences.getString("profile_picture", "").toString())
 
         val btnupdate = findViewById(R.id.btnUpdate) as ImageView
         val btnPassword = findViewById(R.id.btnResetPaswword) as ImageView
 
         val btnCopy = findViewById(R.id.btncopy) as ImageView
         val btnlogout = findViewById(R.id.btnlogout) as ImageView
+
 
         btnupdate!!.setOnClickListener{
             val goToUpdatePage = Intent(this, UpdateProfile::class.java)
@@ -120,7 +120,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun navigate(){
-        val goreset = Intent(this, change_passwordActivity::class.java)
+        val goreset = Intent(this, Change_passwordActivity::class.java)
         startActivity(goreset, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
 
     }

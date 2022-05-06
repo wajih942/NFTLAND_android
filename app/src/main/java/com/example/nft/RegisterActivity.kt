@@ -6,7 +6,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.service.controls.ControlsProviderService
 import android.util.Log
 
 import android.widget.Button
@@ -14,7 +13,6 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.example.nft.models.Customer
 import com.example.nft.utils.ApiService
-import com.example.nft.utils.CustomerService
 
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -153,7 +151,7 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.makeText(this@RegisterActivity, "Thank you for joining us ", Toast.LENGTH_SHORT).show()
                             navigate()
                         } else {
-                            Log.i("onResponse heyyyyy", data.toString())
+                            Log.i("onResponse hhhhaha", data.toString())
 
                             Log.i("OnResponse non", response.body().toString())
                         }
@@ -182,7 +180,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun navigate(){
-        val mainIntent = Intent(this, ProfileActivity::class.java)
+        val mainIntent = Intent(this, LoginActivity::class.java)
         startActivity(mainIntent)
         finish()
     }

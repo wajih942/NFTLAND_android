@@ -1,6 +1,7 @@
 package com.example.nft.models
 
 data class Customer(
+    var _id  : String,
     var name: String,
     var url: String,
     var bio: String,

@@ -17,6 +17,10 @@ import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.widget.LinearLayout
+
+
+
 
 
 const val PREF_NAME = "LOGIN_PREF_NFT"
@@ -43,11 +47,19 @@ class LoginActivity : AppCompatActivity() {
         val waiting = findViewById<TextView>(R.id.textWaiting)
         val btnLogin =findViewById<Button>(R.id.btnLogin)
         val waitingLayout = findViewById<LinearLayout>(R.id.waiting)
-        val forgetpassword = findViewById<TextView>(R.id.forgetpassword)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
         val LoginFailed = findViewById<ImageView>(R.id.LoginFailed)
         mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        val forgotpassord = findViewById<View>(R.id.forgetpassword) as LinearLayout
+
+        forgotpassord.setOnClickListener {
+            val mainIntent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(mainIntent)
+        }
+
         waitingLayout.visibility = View.GONE
+
+
 
         val bntRegister = findViewById<Button>(R.id.UiRegister)
         bntRegister!!.setOnClickListener{
@@ -62,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
         btnLogin!!.setOnClickListener{
             btnLogin.visibility = View.GONE
             waitingLayout.visibility = View.VISIBLE
-            forgetpassword.visibility = View.GONE
+            forgotpassord.visibility = View.GONE
         if (validate()){
             ApiService.customerService.login(
                 CustomerService.LoginBody(
@@ -76,13 +88,15 @@ class LoginActivity : AppCompatActivity() {
                             call: Call<CustomerService.LoginResponse>,
                             response: Response<CustomerService.LoginResponse>
                         ) {
-                            if (response.code() == 200) {
+                            if (response.code() == 200 ) {
 
                                 val preferences: SharedPreferences =
                                     getSharedPreferences("pref", Context.MODE_PRIVATE)
                                 val editor = preferences.edit()
                                 editor.putString("token", response.body()?.token.toString())
 
+                                editor.putString("id", response.body()?.Customer?._id.toString())
+                                    .apply()
                                 editor.putString("email", response.body()?.Customer?.email.toString())
                                     .apply()
                                 editor.putString("wallet_address", response.body()?.Customer?.wallet_address.toString())
@@ -100,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
                                 navigate()
 
                             }
-                            else if (response.code() == 401){
+                            else if (response.code() == 403){
 
                                 progressBar.visibility = View.GONE
                                 waiting.text = "Login Failed"
@@ -110,7 +124,7 @@ class LoginActivity : AppCompatActivity() {
 
                                 waitingLayout.setOnClickListener {
                                     waitingLayout.visibility = View.GONE
-                                    forgetpassword.visibility = View.VISIBLE
+                                    forgotpassord.visibility = View.VISIBLE
                                     LoginFailed.visibility = View.VISIBLE
 
                                     txtEmail.setText("")
@@ -119,9 +133,7 @@ class LoginActivity : AppCompatActivity() {
 
                                 }                            }
 
-                            else {
-                                Toast.makeText(this@LoginActivity, "ERROR", android.widget.Toast.LENGTH_SHORT).show()
-                            }
+
                         }
 
                         override fun onFailure(

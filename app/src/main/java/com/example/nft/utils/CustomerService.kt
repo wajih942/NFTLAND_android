@@ -20,18 +20,16 @@ interface CustomerService {
 
     data class ResetResponse(
         @SerializedName("message")
-        val mssage: String
+        val message: String
     )
 
     data class LoginBody(val email: String, val password: String)
-    data class ResetBody(val email: String, val password: String)
+    data class ResetBody( val password: String)
 
     data class recoverBody(val email: String)
 
     @POST("/customers/reset/{token}")
-    fun reset(@Body ResetBody: ResetBody,
-        @Query("token") token: String?
-
+    fun reset(@Body ResetBody: ResetBody
     ): Call<ResetResponse>
 
 
@@ -50,5 +48,11 @@ interface CustomerService {
 
     ): Call<Customer>
 
+    @Multipart
+    @PUT("customers/{id}")
+    fun updateProfile(@PartMap data : LinkedHashMap<String, RequestBody>,
+                 @Part profile_picture: MultipartBody.Part,
+                      @Path("id") id : String?
 
+    ): Call<Customer>
 }
