@@ -3,11 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".onboarding.screens.FirstScreen"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_margin="20dp"
-    >
+    android:layout_margin="20dp">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="NFTLand"
+        app:logo="@drawable/logo"
+        ></androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:layout_margin="20dp"
@@ -56,11 +64,14 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="normal"/>
+
     <CheckBox
+        android:id="@+id/iagreecheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checked="false"
         android:text="I Agree"
-        android:textSize="18dp"/>
+        android:textSize="18dp" />
 
     <LinearLayout
         android:layout_margin="10dp"

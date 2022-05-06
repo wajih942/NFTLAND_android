@@ -3,12 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".onboarding.screens.ThirdScreen"
     android:orientation="vertical"
     android:layout_margin="20dp"
-    android:gravity="center"
-    >
+    android:gravity="center">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="NFTLand"
+        app:logo="@drawable/logo"
+        >
+
+    </androidx.appcompat.widget.Toolbar>
     <TextView
 
         android:layout_width="match_parent"
@@ -38,7 +48,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ppp"/>
     <LinearLayout
-        android:layout_margin="50dp"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
