@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.profile -> Toast.makeText(this,"you are already on profile ",Toast.LENGTH_SHORT).show()
                 R.id.search -> goToSearch()
+                R.id.wallet -> goTowallet()
             }
             true
         }
@@ -179,6 +180,10 @@ class MainActivity : AppCompatActivity() {
     }*/
     fun goToSearch(){
         val intent = Intent(this,SearchActivity::class.java)
+        startActivity(intent)
+    }
+    fun goTowallet(){
+        val intent = Intent(this,KeyActivity::class.java)
         startActivity(intent)
     }
 
