@@ -18,40 +18,22 @@
         >
 
     </androidx.appcompat.widget.Toolbar>
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/material_icon_button"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return"
-        android:textColor="@color/black"
-        app:icon="@drawable/left"
-        android:layout_margin="15dp"
 
-        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
         >
         <TextView
-            android:layout_marginTop="5dp"
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Terms of service"
+            android:text="Private Key"
             android:textColor="@color/black"
             android:textSize="40sp"
             android:textStyle="bold"/>
-        <TextView
 
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Please take a few minutes to read and understand Stacks Terms of Service. To continue, you’ll need to accept the terms of services by checking the boxes."
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="normal"/>
 
 
         <ImageView
@@ -62,35 +44,41 @@
 
         <TextView
 
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I am at least 13 year old"
+            android:text="While a Secret Recovery Phrase is used to back up your entire MetaMask Wallet, including all accounts created in that wallet, each account has its own private key. This key can be used to import that account, and that account only, into a different wallet"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="normal"/>
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_private"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I agree Stack terms of service"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="normal"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_private"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionGo"
+                android:hint="Private Key"
+                android:inputType="textCapWords"
+                android:textColor="#363A43"
+                android:textColorHint="#7A8089" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:backgroundTint="@color/design_default_color_primary_dark"
-                android:layout_margin="15dp"/>
-            <Button
+                android:id="@+id/continuebtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Continue"

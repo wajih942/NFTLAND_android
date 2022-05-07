@@ -1,19 +1,24 @@
 package com.example.nft
 
 import android.content.ClipData
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
+import android.widget.EditText
 
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.widget.doOnTextChanged
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +28,7 @@ import com.example.nft.adapter.MyAdapter
 import com.example.nft.model.Item
 import com.example.nft.repository.Repository
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -33,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     private val myAdapter by lazy { MyAdapter() }
     private lateinit var newitemArrayList : ArrayList<Item>
     private lateinit var tempitemArrayList : ArrayList<Item>
-
+    lateinit var sharedPrefrences : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,14 +64,44 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val headerView = navView.getHeaderView(0)
+        val navBalance = headerView.findViewById<TextView>(R.id.baltv)
+
+
+
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
+        sharedPrefrences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+        val address = sharedPrefrences.getString("address","").toString()
+        if ( address != ""){
+            viewModel.getBalance(address)
+        }
+
+
+        viewModel.myResponse1.observe(this, Observer { response ->
+            if (response.isSuccessful){
+                navBalance.setText(response.body()?.balance.toString())
+            }else{
+                Log.i("Response","error")
+
+            }
+
+        })
 
         navView.setNavigationItemSelectedListener {
+
             when(it.itemId){
                 R.id.profile -> Toast.makeText(this,"you are already on profile ",Toast.LENGTH_SHORT).show()
                 R.id.search -> goToSearch()
                 R.id.wallet -> goTowallet()
+                R.id.disconnect -> bbbb()
+                R.id.upload -> goToUpload()
+
             }
             true
+
+
         }
         /*
         var tool = findViewById<Toolbar>(R.id.toolbarb)
@@ -185,6 +221,22 @@ class MainActivity : AppCompatActivity() {
     fun goTowallet(){
         val intent = Intent(this,KeyActivity::class.java)
         startActivity(intent)
+    }
+    fun bbbb(){
+        sharedPrefrences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+        Toast.makeText(this,sharedPrefrences.getString("address","").toString() + "____" + sharedPrefrences.getString("private","").toString(),Toast.LENGTH_SHORT).show()
+
+    }
+    fun goToUpload(){
+        sharedPrefrences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
+        val address = sharedPrefrences.getString("address","").toString()
+        val pvKey = sharedPrefrences.getString("private","").toString()
+        if (address != "" && pvKey != ""){
+            val intent = Intent(this,UploadActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(this,"Please Connect Your Wallet",Toast.LENGTH_SHORT).show()
+        }
     }
 
 
