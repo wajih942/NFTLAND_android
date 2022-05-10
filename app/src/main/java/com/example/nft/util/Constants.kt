@@ -2,6 +2,6 @@ package com.example.nft.util
 
 class Constants {
     companion object{
-        const val BASE_URL: String = "http://172.20.10.11:3000/"
+        const val BASE_URL: String = "http://192.168.1.11:3001/"
     }
 }

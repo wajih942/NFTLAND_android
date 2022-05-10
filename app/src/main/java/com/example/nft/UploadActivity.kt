@@ -9,15 +9,21 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.Manifest
 import android.app.Activity
+import android.media.Image
+import android.net.Uri
+import android.provider.ContactsContract
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputLayout
+import java.util.concurrent.ThreadLocalRandom.current
 
 class UploadActivity : AppCompatActivity() {
     private val GALLERY = 100
     private val GALLERY_PERMISSION_CODE = 101
+    private lateinit var image : ImageView
+    private lateinit var uri:Uri
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getWindow().setFlags(
@@ -36,6 +42,7 @@ class UploadActivity : AppCompatActivity() {
         val tiPrice : TextInputLayout = findViewById(R.id.ti_price)
         val etPrice : EditText = findViewById(R.id.et_price)
         val uploadBtn : Button = findViewById(R.id.uploadbtn)
+
 
         uploadBtn.isEnabled = false
         etName.doOnTextChanged { text, start, before, count ->
@@ -84,7 +91,14 @@ class UploadActivity : AppCompatActivity() {
             }
         }
         uploadBtn.setOnClickListener {
+
             val intent = Intent(this,PreviewActivity::class.java)
+
+            intent.putExtra("uri",uri.toString())
+            intent.putExtra("title",etName.text.toString())
+            intent.putExtra("price",etPrice.text.toString())
+            intent.putExtra("desc",etDesc.text.toString())
+            intent.putExtra("size",etSize.text.toString())
             startActivity(intent)
         }
 
@@ -141,10 +155,14 @@ class UploadActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val image = findViewById<ImageView>(R.id.imageupload)
+
+        image = findViewById(R.id.imageupload)
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY)
         {
             image.setImageURI(data?.data)
+            uri = data?.data!!
+
+
         }
     }
 

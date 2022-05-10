@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WalletActivity"
+    tools:context=".MintNftActivity"
     android:orientation="vertical"
     android:layout_margin="15dp">
     <androidx.appcompat.widget.Toolbar
@@ -17,17 +17,7 @@
         >
 
     </androidx.appcompat.widget.Toolbar>
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/material_icon_button"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return"
-        android:textColor="@color/black"
-        app:icon="@drawable/left"
-        android:layout_margin="15dp"
 
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buy Nft"
+            android:text="Mint Nft"
             android:textColor="@color/black"
             android:textSize="40sp"
             android:textStyle="bold"/>
@@ -58,7 +48,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Item Price"
+            android:text="Gas fee"
             android:textColor="@color/black"
             android:textSize="40sp"
             android:textStyle="bold"/>
@@ -74,7 +64,7 @@
                 android:id="@+id/itemprice"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="0.0015 Eth"
+                android:text="0.0016 Eth"
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 android:textStyle="normal"/>
@@ -98,8 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionGo"
-                android:text="10"
                 android:hint="Gas Price"
+                android:text="10"
                 android:inputType="number"
                 android:textColor="#363A43"
                 android:textColorHint="#7A8089" />
@@ -125,8 +115,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionGo"
-                android:text="209655"
                 android:hint="Gas Limit"
+                android:text="209655"
                 android:inputType="number"
                 android:textColor="#363A43"
                 android:textColorHint="#7A8089" />
@@ -147,7 +137,6 @@
                 android:shadowRadius="50"
                 android:background="@drawable/round_button"
                 android:layout_margin="15dp"/>
-
             <Button
                 android:id="@+id/buybtn"
                 android:layout_width="120dp"

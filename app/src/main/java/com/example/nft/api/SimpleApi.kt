@@ -1,10 +1,10 @@
 package com.example.nft.api
 
-import com.example.nft.model.Balance
-import com.example.nft.model.Item
+import com.example.nft.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface SimpleApi {
 
@@ -20,4 +20,16 @@ interface SimpleApi {
 
     @GET("onsaleperartist/{address}")
     suspend fun getOnSale(@Path (value = "address") address : String) : Response<List<Item>>
+
+    @POST("buynft")
+    suspend fun buynft(
+        @Body itemInfo : ItemInfo
+    ): Response<TrInfo>
+
+    @Multipart
+    @POST("upload")
+    fun uploadItem(@PartMap data : LinkedHashMap<String, RequestBody>,
+                 @Part image: MultipartBody.Part
+
+    ): Response<TrInfo>
 }
