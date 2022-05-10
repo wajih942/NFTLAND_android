@@ -38,21 +38,8 @@ class MintNftActivity : AppCompatActivity() {
             finish()
         }
 
-        val stream = contentResolver.openInputStream(uri)
-        /*val request =
-            stream?.let {
-                RequestBody.create(
-                    "image/jpg",
-                    it.readBytes()
-                )
-            }
-        val image = request?.let {
-            MultipartBody.Part.createFormData(
-                "image",
-                "image.jpg",
-                it
-            )
-        }*/
+
+    
 
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository)
