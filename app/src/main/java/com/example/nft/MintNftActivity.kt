@@ -45,8 +45,8 @@ class MintNftActivity : AppCompatActivity() {
                     "image/jpg",
                     it.readBytes()
                 )
-            } */
-        /*val image = request?.let {
+            }
+        val image = request?.let {
             MultipartBody.Part.createFormData(
                 "image",
                 "image.jpg",
