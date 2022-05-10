@@ -1,5 +1,6 @@
 package com.example.nft
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,8 +24,19 @@ class MintNftActivity : AppCompatActivity() {
         var cancelbtn = findViewById<Button>(R.id.cancelbtn)
         var buybtn = findViewById<Button>(R.id.buybtn)
         var title = intent.getStringExtra("title")
+        val price = intent.getStringExtra("price")
         var st = intent.getStringExtra("uri")
         val uri : Uri = Uri.parse(st)
+
+        val txhash = "wajih12345678"
+
+        buybtn.setOnClickListener {
+            val intent = Intent(this,MintCheckActivity::class.java)
+            intent.putExtra("txhash",txhash.toString())
+            intent.putExtra("price",price.toString())
+            startActivity(intent)
+            finish()
+        }
 
         val stream = contentResolver.openInputStream(uri)
         /*val request =

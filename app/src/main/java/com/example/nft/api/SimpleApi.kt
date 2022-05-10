@@ -26,6 +26,11 @@ interface SimpleApi {
         @Body itemInfo : ItemInfo
     ): Response<TrInfo>
 
+    @POST("buynft")
+    suspend fun createsale(
+        @Body marketSale : MarketSale
+    ): Response<TrInfo>
+
     @Multipart
     @POST("upload")
     fun uploadItem(@PartMap data : LinkedHashMap<String, RequestBody>,

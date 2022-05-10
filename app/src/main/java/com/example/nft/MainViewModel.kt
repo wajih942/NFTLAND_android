@@ -3,6 +3,7 @@ package com.example.nft
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.nft.api.RetrofitInstance
 import com.example.nft.model.*
 import com.example.nft.repository.Repository
 import kotlinx.coroutines.launch
@@ -17,6 +18,12 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val myResponse1: MutableLiveData<Response<Balance>> = MutableLiveData()
     val myResponse2: MutableLiveData<Response<TrInfo>> = MutableLiveData()
 
+    fun createsale( marketSale : MarketSale) {
+        viewModelScope.launch {
+            val response = repository.createsale(marketSale)
+            myResponse2.value = response
+        }
+    }
 
     fun buynft(itemInfo : ItemInfo){
         viewModelScope.launch {

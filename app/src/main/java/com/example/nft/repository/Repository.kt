@@ -5,11 +5,16 @@ import com.example.nft.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.Part
 import retrofit2.http.PartMap
 import java.io.File
 
 class Repository {
+
+    suspend fun createsale( marketSale : MarketSale): Response<TrInfo>{
+        return RetrofitInstance.api.createsale(marketSale)
+    }
     suspend fun getItem() : Response<List<Item>>{
         return RetrofitInstance.api.getItem()
     }

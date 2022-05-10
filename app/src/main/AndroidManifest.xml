@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Nft"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MarketSaleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MintCheckActivity"
+            android:exported="false" />
+        <activity
             android:name=".MintNftActivity"
             android:exported="false" />
         <activity

@@ -9,31 +9,34 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import org.w3c.dom.Text
+import com.example.nft.R
 
-class CheckActivity : AppCompatActivity() {
+class MintCheckActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_check)
-        val txhash = intent.getStringExtra("txhash")
+        setContentView(R.layout.activity_mint_check)
         val hash = findViewById<TextView>(R.id.hash)
-        val copy = findViewById<Button>(R.id.copybtn)
         val continuebtn = findViewById<Button>(R.id.continuebtn)
-        hash.text = txhash.toString()
-        Toast.makeText(this,txhash,Toast.LENGTH_SHORT).show()
-        copy.setOnClickListener {
-            copyToClipboard(hash.text.toString())
-        }
+        val copybtn = findViewById<Button>(R.id.copybtn)
+        val txhash = intent.getStringExtra("txhash")
+        val price = intent.getStringExtra("price")
+        hash.text = txhash
         continuebtn.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,MarketSaleActivity::class.java)
+            intent.putExtra("txhash",txhash.toString())
+            intent.putExtra("price",price.toString())
             startActivity(intent)
             finish()
+
+        }
+        copybtn.setOnClickListener {
+            copyToClipboard(txhash.toString())
         }
     }
     fun Context.copyToClipboard(text: CharSequence){
         val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("label",text)
         clipboard.setPrimaryClip(clip)
-        Toast.makeText(this,"copied succesfully",Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"copied succesfully", Toast.LENGTH_LONG).show()
     }
 }
