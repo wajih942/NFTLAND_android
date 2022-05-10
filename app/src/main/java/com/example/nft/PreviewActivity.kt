@@ -46,7 +46,7 @@ class PreviewActivity : AppCompatActivity() {
             intent.putExtra("title",title1.toString())
             intent.putExtra("price",price1.toString())
             intent.putExtra("desc",desc1.toString())
-            intent.putExtra("size",size1)
+            intent.putExtra("size",size1.toString())
             startActivity(intent)
         }
 

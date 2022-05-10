@@ -46,7 +46,6 @@ class WalletActivity : AppCompatActivity() {
             val itemInfo = ItemInfo(price,token,address,privateKey,etgasLimit.text.toString(),etgasprice.text.toString())
             viewModel.buynft(itemInfo)
 
-
         }
         viewModel.myResponse2.observe(this, Observer { response ->
             if (response.isSuccessful){

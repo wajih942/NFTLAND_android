@@ -137,15 +137,15 @@
                 android:shadowRadius="50"
                 android:background="@drawable/round_button"
                 android:layout_margin="15dp"/>
+
             <Button
                 android:id="@+id/buybtn"
                 android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="Buy"
-                android:shadowRadius="5"
+                android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="@drawable/round_button"
-                />
+                android:shadowRadius="5"
+                android:text="Buy" />
         </LinearLayout>
 
 

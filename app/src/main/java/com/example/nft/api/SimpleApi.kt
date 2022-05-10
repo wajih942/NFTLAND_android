@@ -26,7 +26,7 @@ interface SimpleApi {
         @Body itemInfo : ItemInfo
     ): Response<TrInfo>
 
-    @POST("buynft")
+    @POST("marketsale")
     suspend fun createsale(
         @Body marketSale : MarketSale
     ): Response<TrInfo>
