@@ -15,7 +15,7 @@
             android:id="@+id/first"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="OnSales Items"
+            android:text="Created Items"
             android:gravity="start"
             android:textColor="@color/black"
             android:textStyle="bold"

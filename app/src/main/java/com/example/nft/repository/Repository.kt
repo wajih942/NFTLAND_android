@@ -1,11 +1,12 @@
 package com.example.nft.repository
 
 import com.example.nft.api.RetrofitInstance
-import com.example.nft.model.Balance
-import com.example.nft.model.Item
-import com.example.nft.model.ItemUpload
+import com.example.nft.model.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
+import retrofit2.http.Part
+import retrofit2.http.PartMap
 import java.io.File
 
 class Repository {
@@ -22,7 +23,10 @@ class Repository {
     suspend fun getOnSale(address : String) : Response<List<Item>>{
         return RetrofitInstance.api.getOnSale(address)
     }
-    suspend fun uploadItem(item : ItemUpload ,image : MultipartBody.Part){
-        return RetrofitInstance.api.uploadItem(item, image)
+    suspend fun uploadItem(data : LinkedHashMap<String, RequestBody>, image : MultipartBody.Part) : Response<TrInfo>{
+        return RetrofitInstance.api.uploadItem(data,image)
+    }
+    suspend fun buynft(itemInfo : ItemInfo): Response<TrInfo>{
+        return RetrofitInstance.api.buynft(itemInfo)
     }
 }

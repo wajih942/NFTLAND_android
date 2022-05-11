@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/drawable/righta.xml" value="0.31296296296296294" />
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/drawable/wallet.xml" value="0.22395833333333334" />
-        <entry key="app/src/main/res/layout/activity_check.xml" value="0.1651469098277609" />
+        <entry key="app/src/main/res/layout/activity_check.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_key.xml" value="0.1651469098277609" />

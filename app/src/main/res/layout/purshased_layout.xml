@@ -66,15 +66,17 @@
                         android:textSize="15dp"
                         android:textColor="#00FF00"
                         android:text="Amazing digital art"
-                        android:layout_marginRight="20dp"/>
+                        android:layout_margin="5dp"
+                        />
                     <TextView
+                        android:layout_margin="5dp"
                         android:id="@+id/nftprice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:textColor="#00FF00"
                         android:text="2 Eth"
-                        android:layout_marginLeft="20dp"/>
+                        />
                 </LinearLayout>
             </LinearLayout>
 

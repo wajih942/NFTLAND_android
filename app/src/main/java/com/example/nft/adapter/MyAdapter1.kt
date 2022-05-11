@@ -24,8 +24,8 @@ class MyAdapter1 : RecyclerView.Adapter<MyAdapter1.MyViewHolder>() {
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.nftdescription).text = nfts[position].description
-        holder.itemView.findViewById<TextView>(R.id.nftname).text = nfts[position].name
-        holder.itemView.findViewById<TextView>(R.id.nftprice).text = nfts[position].price + " ETH"
+        holder.itemView.findViewById<TextView>(R.id.nftname).setText(nfts[position].name)
+        holder.itemView.findViewById<TextView>(R.id.nftprice).setText( nfts[position].price + " ETH")
         Glide.with(holder.itemView).load(nfts[position].image).into(holder.itemView.findViewById(R.id.nftimage))
     }
 

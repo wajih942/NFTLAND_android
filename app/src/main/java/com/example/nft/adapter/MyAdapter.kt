@@ -46,6 +46,7 @@ class MyAdapter : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
             intent.putExtra("desc",nfts[position].description)
             intent.putExtra("seller",nfts[position].seller)
             intent.putExtra("image",nfts[position].image)
+            intent.putExtra("token",nfts[position].tokenId)
 
 
             it.context.startActivity(intent)
