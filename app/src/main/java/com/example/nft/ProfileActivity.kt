@@ -10,6 +10,7 @@ import android.content.SharedPreferences
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
 import com.example.nft.utils.ApiService
 import com.example.nft.utils.CustomerService
 import com.squareup.picasso.Picasso
@@ -43,14 +44,19 @@ class ProfileActivity : AppCompatActivity() {
         val txtBio = findViewById<TextView>(R.id.txtBio)
         txtBio.text = preferences.getString("bio","")
 
-
-
         val imageprofile = findViewById<ImageView>(R.id.ImageProfile)
-       Picasso.get()
-            .load(preferences.getString("profile_picture", ""))
-            .into(imageprofile)
+        val media = preferences.getString("profile_picture", "")
+        if (media !== null) {
+            Glide.with(this)
+                .load(media)
+                .into(imageprofile)
+        } else {
+            imageprofile.setImageResource(R.drawable.ic_launcher_background)
+        }
 
-Log.i("hhhhhhhhhhhhhhh",preferences.getString("profile_picture", "").toString())
+
+
+Log.i("gaga",preferences.getString("profile_picture", "").toString())
 
         val btnupdate = findViewById(R.id.btnUpdate) as ImageView
         val btnPassword = findViewById(R.id.btnResetPaswword) as ImageView

@@ -1,7 +1,9 @@
 package com.example.nft
 
 import android.app.ActivityOptions
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -17,9 +19,6 @@ import retrofit2.Response
 
 class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
 
 
         super.onCreate(savedInstanceState)
@@ -46,12 +45,37 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     {
                         if (response.code() == 200 ) {
 
+                            //stocker token
                             val preferences: SharedPreferences =
-                            getSharedPreferences("pref", Context.MODE_PRIVATE)
+                            getSharedPreferences("changepassword", Context.MODE_PRIVATE)
                         val editor = preferences.edit()
                         editor.putString("TokenResetPassword", response.body()?.Token.toString())
-                        Toast.makeText(this@ForgotPasswordActivity, "Check your Email", Toast.LENGTH_SHORT).show()
-                            navigate()
+                            editor.putString("EmailResetPassword",  txtEmail!!.text.toString())
+
+
+
+                            //alert dialog
+                            val dialogBuilder = androidx.appcompat.app.AlertDialog.Builder(this@ForgotPasswordActivity)
+
+                            dialogBuilder.setMessage("You have received a verification email")
+
+                                .setCancelable(false)
+                                // positive button text and action
+                                .setPositiveButton("Yes", DialogInterface.OnClickListener {
+                                        dialog, id ->
+                                    val mainIntent = Intent(this@ForgotPasswordActivity, ResetPasswordActivity::class.java)
+                                    startActivity(mainIntent)
+                                    finish()
+                                })
+                                .setNegativeButton("No", DialogInterface.OnClickListener {
+                                        dialog, id -> dialog.cancel()
+                                })
+
+                            val alert = dialogBuilder.create()
+                            alert.setTitle("Password Reset")
+                            alert.show()
+                            Log.d("MyActivity", response.body()?.Token.toString())
+                            Log.d("MyActivity", txtEmail!!.text.toString())
                     }
                         else if (response.code() == 401){
                             progressBar.visibility = View.GONE
@@ -61,8 +85,12 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
                         }
                         else {
-                            Toast.makeText(this@ForgotPasswordActivity, "ERROR", Toast.LENGTH_SHORT).show()
+                            val dialogBuilder = androidx.appcompat.app.AlertDialog.Builder(this@ForgotPasswordActivity)
+                            dialogBuilder.setMessage("Try again")
 
+                            val alert = dialogBuilder.create()
+                            alert.setTitle("Password Reset")
+                            alert.show()
                         }
                     }
 

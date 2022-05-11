@@ -24,12 +24,14 @@ interface CustomerService {
     )
 
     data class LoginBody(val email: String, val password: String)
-    data class ResetBody( val password: String)
+    data class ResetBody( val email: String,val password: String)
 
     data class recoverBody(val email: String)
 
     @POST("/customers/reset/{token}")
-    fun reset(@Body ResetBody: ResetBody
+    fun reset(@Body ResetBody: ResetBody,
+              @Path("token") token : String?
+
     ): Call<ResetResponse>
 
 
