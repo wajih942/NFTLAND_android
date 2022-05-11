@@ -1,0 +1,43 @@
+package com.example.nft
+
+import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.os.FileUtils
+import android.widget.Button
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import com.example.nft.model.ItemUpload
+import com.example.nft.repository.Repository
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
+import java.nio.file.Path
+
+class MintNftActivity : AppCompatActivity() {
+    private lateinit var viewModel: MainViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_mint_nft)
+        var cancelbtn = findViewById<Button>(R.id.cancelbtn)
+        var buybtn = findViewById<Button>(R.id.buybtn)
+        var title = intent.getStringExtra("title")
+        var st = intent.getStringExtra("uri")
+        val uri : Uri = Uri.parse(st)
+
+        val path = uri.path
+        val file = File(path)
+        val image : RequestBody = RequestBody.create(MediaType.parse(contentResolver.getType(uri)),file)
+        val image2 : MultipartBody.Part = MultipartBody.Part.createFormData("image",file.name,image)
+
+        val item = ItemUpload(name = "wajih", description ="zdd" , "1" , details = "zdzed")
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
+        viewModel.uploadItem(item, image2)
+        cancelbtn.setOnClickListener {
+            this.finish()
+        }
+    }
+}

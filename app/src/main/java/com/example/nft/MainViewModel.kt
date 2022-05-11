@@ -5,13 +5,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nft.model.Balance
 import com.example.nft.model.Item
+import com.example.nft.model.ItemUpload
 import com.example.nft.repository.Repository
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 import retrofit2.Response
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
     val myResponse: MutableLiveData<Response<List<Item>>> = MutableLiveData()
     val myResponse1: MutableLiveData<Response<Balance>> = MutableLiveData()
+    fun uploadItem(item : ItemUpload, image : MultipartBody.Part){
+        viewModelScope.launch {
+            val response= repository.uploadItem(item,image)
+        }
+    }
     fun getItem(){
         viewModelScope.launch {
             val response = repository.getItem()
