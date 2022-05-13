@@ -57,7 +57,7 @@ class UpdateProfile : AppCompatActivity() {
         }
         val btnsubmit =findViewById<Button>(R.id.BtnSubmit)
 
-        val btnChooseImage = findViewById<Button>(R.id.changeImage) as ImageView
+        val btnChooseImage = findViewById<Button>(R.id.changeImage)
 
 
         btnChooseImage.setOnClickListener {

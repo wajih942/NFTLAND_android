@@ -49,10 +49,11 @@ class ForgotPasswordActivity : AppCompatActivity() {
                             val preferences: SharedPreferences =
                             getSharedPreferences("changepassword", Context.MODE_PRIVATE)
                         val editor = preferences.edit()
-                        editor.putString("TokenResetPassword", response.body()?.Token.toString())
-                            editor.putString("EmailResetPassword",  txtEmail!!.text.toString())
+                        editor.putString("TokenResetPassword", response.body()?.Token.toString()) .apply()
+                            editor.putString("EmailResetPassword",  txtEmail!!.text.toString()) .apply()
 
-
+                            Log.d("MyActivity", response.body()?.Token.toString())
+                            Log.d("MyActivity", txtEmail!!.text.toString())
 
                             //alert dialog
                             val dialogBuilder = androidx.appcompat.app.AlertDialog.Builder(this@ForgotPasswordActivity)
@@ -74,13 +75,11 @@ class ForgotPasswordActivity : AppCompatActivity() {
                             val alert = dialogBuilder.create()
                             alert.setTitle("Password Reset")
                             alert.show()
-                            Log.d("MyActivity", response.body()?.Token.toString())
-                            Log.d("MyActivity", txtEmail!!.text.toString())
+
                     }
                         else if (response.code() == 401){
                             progressBar.visibility = View.GONE
                             errorlayout.visibility=View.VISIBLE
-                            Toast.makeText(this@ForgotPasswordActivity, "Try again", Toast.LENGTH_SHORT).show()
 
 
                         }

@@ -34,7 +34,7 @@ class ResetPasswordActivity : AppCompatActivity() {
                 getSharedPreferences("changepassword", Context.MODE_PRIVATE)
             val token= preferences.getString("TokenResetPassword","")
             val email= preferences.getString("EmailResetPassword","")
-            println("--------------------------------------------------------------")
+            println("----------------------------hahahah----------------------------------")
             println(token.toString())
             println(email.toString())
 
