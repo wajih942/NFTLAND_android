@@ -100,18 +100,17 @@
         android:id="@+id/btnLogin"
         android:layout_width="187dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/btndesign"
         android:backgroundTint="@color/design_default_color_primary_dark"
         android:text="LOGIN"
-        android:background="@drawable/btndesign"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbRememberMe" />
+        app:layout_constraintTop_toBottomOf="@+id/waiting" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/UiRegister"
@@ -129,7 +128,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.582" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/google_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="21dp"
+        android:src="@drawable/google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UiRegister" />
 
     <LinearLayout
         android:id="@+id/waiting"

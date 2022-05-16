@@ -3,12 +3,10 @@ package com.example.nft
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
-import android.graphics.PorterDuff
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import com.example.nft.utils.ApiService
@@ -18,6 +16,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.widget.LinearLayout
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+
+
+
+
+
 
 
 
@@ -34,12 +43,25 @@ class LoginActivity : AppCompatActivity() {
     lateinit var txtPassword: TextInputEditText
     lateinit var cbRememberMe: CheckBox
     lateinit var mSharedPref: SharedPreferences
-
+    var gso: GoogleSignInOptions? = null
+    var gsc: GoogleSignInClient? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
+
+
+      val   googleBtn = findViewById<Button>(R.id.google_btn)  as ImageView
+
+        gso =
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        gsc = GoogleSignIn.getClient(this, gso!!)
+
+        googleBtn.setOnClickListener{
+            signInWithGoogle()
+        }
 
         txtEmail = findViewById(R.id.txtEmail)
         txtPassword = findViewById(R.id.txtPassword)
@@ -150,7 +172,29 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun signInWithGoogle() {
+        val signInIntent = gsc!!.signInIntent
+        startActivityForResult(signInIntent, 1000)    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1000) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                task.getResult(ApiException::class.java)
+                navigateToSecondActivity()
+            } catch (e: ApiException) {
+                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
+
+    fun navigateToSecondActivity() {
+        finish()
+        val intent = Intent(this@LoginActivity, SecondActivity::class.java)
+        startActivity(intent)
+    }
 
 
     private fun validate(): Boolean {

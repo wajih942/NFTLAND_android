@@ -26,12 +26,6 @@
                 android:layout_marginTop="20dp"
                 app:srcCompat="@drawable/logo" />
 
-            <TextView
-                android:id="@+id/Textregister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtLayoutEmail"
                 android:layout_width="353dp"
