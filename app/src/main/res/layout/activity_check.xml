@@ -17,18 +17,9 @@
         >
 
     </androidx.appcompat.widget.Toolbar>
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/material_icon_button"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return"
-        android:textColor="@color/black"
-        app:icon="@drawable/left"
-        android:layout_margin="15dp"
 
-        />
     <LinearLayout
+        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -43,21 +34,43 @@
             android:textSize="40sp"
             android:textStyle="bold"/>
         <TextView
-
             android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hash : 0x454545x54x78x45x454x85s454x8s74xs854x8s4"
+            android:text="Hash : "
             android:textColor="@color/black"
             android:textSize="15dp"
             android:textStyle="normal"/>
+        <TextView
+
+            android:id="@+id/hash"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0x454545x54x78x45x454x85s454x8s74xs854x8s4"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="normal"/>
+        <Button
+            app:backgroundTint="@null"
+            android:id="@+id/copybtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="Copy"
+            android:textColor="@color/black"
+            android:shadowRadius="50"
+            android:background="@drawable/round_button"
+            android:layout_margin="15dp"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Continue"
-            android:backgroundTint="@color/design_default_color_primary_dark"
-            android:layout_margin="15dp"/>
+            android:id="@+id/continuebtn"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:text="continue"
+            android:shadowRadius="5"
+            android:layout_margin="15dp"
+            android:background="@drawable/round_button"
+            />
 
 
     </LinearLayout>
