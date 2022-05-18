@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".onboarding.screens.FirstScreen"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="20dp">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="NFTLand"
+        app:logo="@drawable/logo"
+        ></androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terms of service"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+        <TextView
+
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please take a few minutes to read and understand Stacks Terms of Service. To continue, you’ll need to accept the terms of services by checking the boxes."
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="normal"/>
+
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/qr"/>
+
+        <TextView
+
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I am at least 13 year old"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="normal"/>
+        <TextView
+
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I agree Stack terms of service"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="normal"/>
+
+    <CheckBox
+        android:id="@+id/iagreecheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="I Agree"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end">
+        <TextView
+            android:id="@+id/continuebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:textSize="22dp"
+            android:textColor="#77b5fe"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</LinearLayout>

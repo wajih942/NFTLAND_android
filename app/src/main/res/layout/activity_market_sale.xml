@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MarketSaleActivity"
+    android:orientation="vertical"
+    android:layout_margin="15dp">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="NftLand"
+        app:logo="@drawable/logo"
+        >
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create market sale"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Listing your item in NFTLand will cost you 0.0025 ETH"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="normal"/>
+        <TextView
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="We do not own your private keys and cannot access your funds without your confirmation."
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="normal"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Listing Price"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"/>
+            <TextView
+                android:id="@+id/itemprice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0.0025 Eth"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="normal"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gas Price"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_gasprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionGo"
+                android:hint="Gas Price"
+                android:text="10"
+                android:inputType="number"
+                android:textColor="#363A43"
+                android:textColorHint="#7A8089" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gas Limit"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+
+                android:id="@+id/et_gasLimit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionGo"
+                android:hint="Gas Limit"
+                android:text="209655"
+                android:inputType="number"
+                android:textColor="#363A43"
+                android:textColorHint="#7A8089" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/buybtn"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="Buy"
+                android:shadowRadius="5"
+                android:layout_margin="15dp"
+                android:background="@drawable/round_button"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
