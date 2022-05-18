@@ -114,6 +114,7 @@ class MintNftActivity : AppCompatActivity() {
                             Toast.makeText(this@MintNftActivity, "ok mrigel ", Toast.LENGTH_SHORT).show()
                             var intent = Intent(this@MintNftActivity,MintCheckActivity::class.java)
                             intent.putExtra("txhash",response.body()?.txHash.toString())
+                            intent.putExtra("price",price.toString())
                             startActivity(intent)
 
                         } else {

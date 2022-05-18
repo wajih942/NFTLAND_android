@@ -85,6 +85,8 @@
             android:exported="false"/>
         <activity android:name=".MintCheckActivity"
             android:exported="false"/>
+        <activity android:name=".MarketSaleActivity"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
