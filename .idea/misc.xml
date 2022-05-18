@@ -29,13 +29,23 @@
         <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_wallet.xml" value="0.125" />
         <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/register_activity.xml" value="0.25" />
         <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/trst.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_change_password.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/activity_check.xml" value="0.1651469098277609" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.1651469098277609" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.1651469098277609" />
+<<<<<<< Updated upstream
         <entry key="app/src/main/res/layout/activity_itemss.xml" value="0.1983695652173913" />
+=======
+        <entry key="app/src/main/res/layout/activity_itemss.xml" value="0.20108695652173914" />
+>>>>>>> Stashed changes
         <entry key="app/src/main/res/layout/activity_key.xml" value="0.1651469098277609" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1651469098277609" />
+        <entry key="app/src/main/res/layout/activity_market_sale.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.1651469098277609" />
+        <entry key="app/src/main/res/layout/activity_mint_check.xml" value="0.20108695652173914" />
+        <entry key="app/src/main/res/layout/activity_mint_nft.xml" value="0.2028985507246377" />
         <entry key="app/src/main/res/layout/activity_preview.xml" value="0.1651469098277609" />
         <entry key="app/src/main/res/layout/activity_private.xml" value="0.1651469098277609" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.1651469098277609" />

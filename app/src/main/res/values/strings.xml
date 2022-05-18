@@ -3,4 +3,6 @@
     <string name="mustNotBeEmpty">Must not be empty !</string>
     <string name="checkYourEmail">Check your email !</string>
 
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
