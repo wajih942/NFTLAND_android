@@ -28,9 +28,9 @@ class Repository {
     suspend fun getOnSale(address : String) : Response<List<Item>>{
         return RetrofitInstance.api.getOnSale(address)
     }
-    suspend fun uploadItem(data : LinkedHashMap<String, RequestBody>, image : MultipartBody.Part) : Response<TrInfo>{
+    /*suspend fun uploadItem(data : LinkedHashMap<String, RequestBody>, image : MultipartBody.Part) : Response<TrInfo>{
         return RetrofitInstance.api.uploadItem(data,image)
-    }
+    }*/
     suspend fun buynft(itemInfo : ItemInfo): Response<TrInfo>{
         return RetrofitInstance.api.buynft(itemInfo)
     }

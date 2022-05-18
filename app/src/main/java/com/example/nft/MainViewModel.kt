@@ -31,12 +31,13 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             myResponse2.value = response
         }
     }
+    /*
     fun uploadItem(data : LinkedHashMap<String, RequestBody>, image : MultipartBody.Part){
         viewModelScope.launch {
             val response= repository.uploadItem(data,image)
             myResponse2.value = response
         }
-    }
+    }*/
     fun getItem(){
         viewModelScope.launch {
             val response = repository.getItem()

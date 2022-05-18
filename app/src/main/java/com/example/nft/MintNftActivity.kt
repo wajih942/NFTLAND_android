@@ -7,6 +7,10 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.FileUtils
+import com.example.nft.model.TrInfo
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -22,9 +26,11 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.nio.file.Path
+import com.example.nft.utils.ApiService
 
 class MintNftActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
+
     lateinit var sharedPrefrences : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,30 +97,42 @@ class MintNftActivity : AppCompatActivity() {
 
 
 
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
-        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
-
-
 
 
         buybtn.setOnClickListener {
+
+            val apiInterface = ApiService
             if (image != null) {
-                viewModel.uploadItem(data,image)
+                apiInterface.customerService.uploadItem(data,image).enqueue(object :
+                    Callback<TrInfo>{
+                    override fun onResponse(
+                        call: Call<TrInfo>,
+                        response: Response<TrInfo>){
+                        if (response.code()==200) {
+
+                            Log.i("Response c bon", response.body().toString())
+                            Toast.makeText(this@MintNftActivity, "ok mrigel ", Toast.LENGTH_SHORT).show()
+                            var intent = Intent(this@MintNftActivity,MintCheckActivity::class.java)
+                            intent.putExtra("txhash",response.body()?.txHash.toString())
+                            startActivity(intent)
+
+                        } else {
+                            Log.i("onResponse hhhhaha", data.toString())
+
+                            Log.i("OnResponse non", response.body().toString())
+                        }
+
+                    }
+                    override fun onFailure(call: Call<TrInfo>, t: Throwable) {
+
+                        Toast.makeText(this@MintNftActivity, "Connexion error!", Toast.LENGTH_SHORT).show()
+                    }
+
+
+                })
             }
+
         }
-        Log.i("rrrrrrrrr",name
-        + description + price + details + privateKey + address)
-        viewModel.myResponse2.observe(this, Observer { response ->
-            if (response.isSuccessful){
-                var intent = Intent(this,MintCheckActivity::class.java)
-                intent.putExtra("txhash",response.body()?.txHash.toString())
-                startActivity(intent)
-            }else{
-                Log.i("Response","error")
 
-            }
-
-        })
     }
 }

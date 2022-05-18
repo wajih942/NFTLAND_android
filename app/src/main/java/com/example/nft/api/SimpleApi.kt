@@ -31,10 +31,4 @@ interface SimpleApi {
         @Body marketSale : MarketSale
     ): Response<TrInfo>
 
-    @Multipart
-    @POST("upload")
-    fun uploadItem(@PartMap data : LinkedHashMap<String, RequestBody>,
-                 @Part image: MultipartBody.Part
-
-    ): Response<TrInfo>
 }

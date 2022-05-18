@@ -1,9 +1,11 @@
 package com.example.nft.utils
+import com.example.nft.model.TrInfo
 import retrofit2.Call
 import com.example.nft.models.Customer
 import com.google.gson.annotations.SerializedName
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface CustomerService {
@@ -28,6 +30,12 @@ interface CustomerService {
 
     data class recoverBody(val email: String)
 
+    @Multipart
+    @POST("upload")
+    fun uploadItem(@PartMap data : LinkedHashMap<String, RequestBody>,
+                   @Part image: MultipartBody.Part
+
+    ): Call<TrInfo>
     @POST("/customers/reset/{token}")
     fun reset(@Body ResetBody: ResetBody,
               @Path("token") token : String?
