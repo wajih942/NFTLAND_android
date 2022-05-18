@@ -52,6 +52,7 @@ class MintNftActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }*/
+
         val stream = contentResolver.openInputStream(uri)
         val request =
             stream?.let {

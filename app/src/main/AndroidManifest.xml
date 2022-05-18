@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nft"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".QrActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ItemssActivity"
+            android:exported="false" />
         <activity
             android:name=".MarketSaleActivity"
             android:exported="false" />

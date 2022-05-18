@@ -6,10 +6,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.nft.model.ItemInfo
@@ -23,6 +21,7 @@ class WalletActivity : AppCompatActivity() {
         setContentView(R.layout.activity_wallet)
         val etgasprice = findViewById<EditText>(R.id.et_gasprice)
         val etgasLimit = findViewById<EditText>(R.id.et_gasLimit)
+        val progress = findViewById<ProgressBar>(R.id.progresscircle)
 
         val itemprice = findViewById<TextView>(R.id.itemprice)
         var cancelbtn = findViewById<Button>(R.id.cancelbtn)
@@ -45,6 +44,7 @@ class WalletActivity : AppCompatActivity() {
         buybtn.setOnClickListener {
             val itemInfo = ItemInfo(price,token,address,privateKey,etgasLimit.text.toString(),etgasprice.text.toString())
             viewModel.buynft(itemInfo)
+            progress.isVisible = true
 
         }
         viewModel.myResponse2.observe(this, Observer { response ->

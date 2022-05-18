@@ -52,6 +52,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
 
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
