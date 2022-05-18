@@ -3,6 +3,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/drawable/btndesign.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/drawable/ic_baseline_cached_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_change_password.xml" value="0.22" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_check.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_details.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_forgot_password.xml" value="0.22" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_info.xml" value="0.33" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_key.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_menu.xml" value="0.10833333333333334" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_preview.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_private.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_register.xml" value="0.18" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_reset.xml" value="0.18" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_reset_password.xml" value="0.22" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_search.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_second.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_test.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_update_profile.xml" value="0.33" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_upload.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/activity_wallet.xml" value="0.125" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/register_activity.xml" value="0.25" />
+        <entry key="..\:/Users/HP/Desktop/NFTLAND_android/app/src/main/res/layout/trst.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_check.xml" value="0.1651469098277609" />
         <entry key="app/src/main/res/layout/activity_details.xml" value="0.1651469098277609" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.1651469098277609" />
