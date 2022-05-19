@@ -22,6 +22,7 @@
             android:textStyle="bold"
             android:textSize="40dp"/>
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favrecycler"
             android:layout_width="match_parent"
             android:layout_height="400dp"/>
         <LinearLayout

@@ -2,15 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.nft">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
-
-
-
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -20,13 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nft"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".DeleteActivity"
+            android:exported="false" />
         <activity
             android:name=".SecondActivity"
             android:exported="false" />
-
-        <activity android:name=".MintNftActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".MintNftActivity"
+            android:exported="false" />
         <activity
             android:name=".ResetActivity"
             android:exported="false" />
@@ -81,12 +79,15 @@
         <activity
             android:name=".DetailsActivity"
             android:exported="false" />
-        <activity android:name=".ItemssActivity"
-            android:exported="false"/>
-        <activity android:name=".MintCheckActivity"
-            android:exported="false"/>
-        <activity android:name=".MarketSaleActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".ItemssActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MintCheckActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarketSaleActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

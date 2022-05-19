@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -32,6 +33,13 @@ android {
 }
 
 dependencies {
+
+    // Room components
+    implementation 'androidx.room:room-runtime:2.4.2'
+    kapt 'androidx.room:room-compiler:2.4.2'
+    implementation 'androidx.room:room-ktx:2.4.2' // Kotlin Extensions and Coroutines support for Room
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+
 
 
     implementation "androidx.activity:activity-ktx:1.2.0-alpha06"

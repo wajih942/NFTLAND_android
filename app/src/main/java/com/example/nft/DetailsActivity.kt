@@ -12,10 +12,14 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.nft.data.FavViewModel
+import com.example.nft.data.FavoriteItem
 
 class DetailsActivity : AppCompatActivity() {
     lateinit var sharedPrefrences : SharedPreferences
+    private lateinit var mFavViewMOdel  :  FavViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getWindow().setFlags(
@@ -29,6 +33,9 @@ class DetailsActivity : AppCompatActivity() {
         var seller1 = findViewById<TextView>(R.id.sellerdetails)
         var image1 = findViewById<ImageView>(R.id.imagedetails)
         var buybtn = findViewById<Button>(R.id.buydetails)
+        var favbtn = findViewById<Button>(R.id.favbtn)
+
+
 
         sharedPrefrences = getSharedPreferences("LOGIN", Context.MODE_PRIVATE)
         val address = sharedPrefrences.getString("address","").toString()
@@ -60,6 +67,15 @@ class DetailsActivity : AppCompatActivity() {
                 }
             }
 
+        }
+
+
+        mFavViewMOdel = ViewModelProvider(this).get(FavViewModel::class.java)
+        favbtn.setOnClickListener {
+
+            var fav = FavoriteItem(0,name.toString(),description.toString(),price.toString(),image.toString())
+            mFavViewMOdel.addFav(fav)
+            Toast.makeText(this,"succefuly added" ,Toast.LENGTH_SHORT).show()
         }
 
 

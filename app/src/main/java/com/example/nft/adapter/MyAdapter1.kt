@@ -23,6 +23,7 @@ class MyAdapter1 : RecyclerView.Adapter<MyAdapter1.MyViewHolder>() {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.purshased_layout,parent,false))
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
         holder.itemView.findViewById<TextView>(R.id.nftdescription).text = nfts[position].description
         holder.itemView.findViewById<TextView>(R.id.nftname).setText(nfts[position].name)
         holder.itemView.findViewById<TextView>(R.id.nftprice).setText( nfts[position].price + " ETH")
